@@ -1,0 +1,40 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-06-20 01:35:50
+ * @LastEditTime: 2021-06-20 01:37:31
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \testGit\cookie.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // var username=document.cookie.split(";")[0].split("=")[1];
+        //JS操作cookies方法!
+        //写cookies
+        function setCookie(name,value){
+            var Days = 30;
+            var exp = new Date();
+            exp.setTime(exp.getTime() + Days*24*60*60*1000);
+            document.cookie = name + "="+ escape (value) + ";expires=" + exp.toGMTString();
+        }
+        function getCookieValue(name){
+            let arr,reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
+            if(arr=document.cookie.match(reg)){
+                return unescape(arr[2]);
+            }else{
+                return null;
+            }
+        }
+        setCookie('qin', 123);
+        console.log(getCookieValue('qin'));
+    </script>
+</body>
+</html>
